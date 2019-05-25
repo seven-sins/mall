@@ -1,10 +1,11 @@
 package com.macro.mall.dto;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * 用户登录参数
@@ -14,10 +15,10 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Setter
 public class UmsAdminParam {
     @ApiModelProperty(value = "用户名", required = true)
-    @NotEmpty(message = "用户名不能为空")
+    @NotBlank(message = "用户名不能为空")
     private String username;
     @ApiModelProperty(value = "密码", required = true)
-    @NotEmpty(message = "密码不能为空")
+    @NotBlank(message = "密码不能为空")
     private String password;
     @ApiModelProperty(value = "用户头像")
     private String icon;

@@ -1,8 +1,9 @@
 package com.macro.mall.dto;
 
+import javax.validation.constraints.NotBlank;
+
 import com.macro.mall.validator.FlagValidator;
 import io.swagger.annotations.ApiModelProperty;
-import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * 商品属性参数
@@ -10,10 +11,10 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 public class PmsProductAttributeParam {
     @ApiModelProperty("属性分类ID")
-    @NotEmpty(message = "属性分类不能为空")
+    @NotBlank(message = "属性分类不能为空")
     private Long productAttributeCategoryId;
     @ApiModelProperty("属性名称")
-    @NotEmpty(message = "属性名称不能为空")
+    @NotBlank(message = "属性名称不能为空")
     private String name;
     @ApiModelProperty("属性选择类型：0->唯一；1->单选；2->多选")
     @FlagValidator({"0","1","2"})

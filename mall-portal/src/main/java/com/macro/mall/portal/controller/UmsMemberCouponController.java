@@ -34,7 +34,7 @@ public class UmsMemberCouponController {
     @ApiOperation("领取指定优惠券")
     @RequestMapping(value = "/add/{couponId}", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult add(@PathVariable Long couponId) {
+    public CommonResult<?> add(@PathVariable Long couponId) {
         return memberCouponService.add(couponId);
     }
 

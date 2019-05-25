@@ -51,7 +51,7 @@ public class OmsPortalOrderController {
     @ApiOperation("取消单个超时订单")
     @RequestMapping(value = "/cancelOrder",method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult cancelOrder(Long orderId){
+    public CommonResult<?> cancelOrder(Long orderId){
         portalOrderService.sendDelayMessageCancelOrder(orderId);
         return CommonResult.success(null);
     }

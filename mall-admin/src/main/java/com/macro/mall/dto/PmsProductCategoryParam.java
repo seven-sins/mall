@@ -2,9 +2,10 @@ package com.macro.mall.dto;
 
 import com.macro.mall.validator.FlagValidator;
 import io.swagger.annotations.ApiModelProperty;
-import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+
 import java.util.List;
 
 /**
@@ -15,7 +16,7 @@ public class PmsProductCategoryParam {
     @ApiModelProperty("父分类的编号")
     private Long parentId;
     @ApiModelProperty(value = "商品分类名称",required = true)
-    @NotEmpty(message = "商品分类名称不能为空")
+    @NotBlank(message = "商品分类名称不能为空")
     private String name;
     @ApiModelProperty("分类单位")
     private String productUnit;

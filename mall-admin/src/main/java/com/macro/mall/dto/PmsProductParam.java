@@ -10,7 +10,8 @@ import java.util.List;
  * Created by macro on 2018/4/26.
  */
 public class PmsProductParam extends PmsProduct{
-    @ApiModelProperty("商品阶梯价格设置")
+	private static final long serialVersionUID = 1L;
+	@ApiModelProperty("商品阶梯价格设置")
     private List<PmsProductLadder> productLadderList;
     @ApiModelProperty("商品满减价格设置")
     private List<PmsProductFullReduction> productFullReductionList;

@@ -10,7 +10,8 @@ import lombok.Setter;
  * Created by macro on 2018/11/16.
  */
 public class SmsFlashPromotionProduct extends SmsFlashPromotionProductRelation{
-    @Getter
+	private static final long serialVersionUID = 1L;
+	@Getter
     @Setter
     private PmsProduct product;
 }

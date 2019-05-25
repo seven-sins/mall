@@ -17,7 +17,7 @@ public interface UmsMemberCouponService {
      * 会员添加优惠券
      */
     @Transactional
-    CommonResult add(Long couponId);
+    CommonResult<?> add(Long couponId);
 
     /**
      * 获取优惠券列表

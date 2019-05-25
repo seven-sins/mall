@@ -9,7 +9,8 @@ import lombok.Setter;
  * Created by macro on 2018/11/19.
  */
 public class SmsFlashPromotionSessionDetail extends SmsFlashPromotionSession {
-    @Setter
+	private static final long serialVersionUID = 1L;
+	@Setter
     @Getter
     private Integer productCount;
 }

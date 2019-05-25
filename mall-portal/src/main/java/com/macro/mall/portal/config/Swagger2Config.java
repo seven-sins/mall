@@ -27,7 +27,8 @@ public class Swagger2Config {
                 .build();
     }
 
-    private ApiInfo apiInfo() {
+    @SuppressWarnings("deprecation")
+	private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("mall前台系统")
                 .description("mall前台系统")

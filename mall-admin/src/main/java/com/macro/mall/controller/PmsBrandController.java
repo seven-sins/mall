@@ -39,8 +39,8 @@ public class PmsBrandController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
     @PreAuthorize("hasAuthority('pms:brand:create')")
-    public CommonResult create(@Validated @RequestBody PmsBrandParam pmsBrand, BindingResult result) {
-        CommonResult commonResult;
+    public CommonResult<?> create(@Validated @RequestBody PmsBrandParam pmsBrand, BindingResult result) {
+        CommonResult<?> commonResult;
         int count = brandService.createBrand(pmsBrand);
         if (count == 1) {
             commonResult = CommonResult.success(count);
@@ -54,10 +54,10 @@ public class PmsBrandController {
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
     @PreAuthorize("hasAuthority('pms:brand:update')")
-    public CommonResult update(@PathVariable("id") Long id,
+    public CommonResult<?> update(@PathVariable("id") Long id,
                                @Validated @RequestBody PmsBrandParam pmsBrandParam,
                                BindingResult result) {
-        CommonResult commonResult;
+        CommonResult<?> commonResult;
         int count = brandService.updateBrand(id, pmsBrandParam);
         if (count == 1) {
             commonResult = CommonResult.success(count);
@@ -71,7 +71,7 @@ public class PmsBrandController {
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     @ResponseBody
     @PreAuthorize("hasAuthority('pms:brand:delete')")
-    public CommonResult delete(@PathVariable("id") Long id) {
+    public CommonResult<?> delete(@PathVariable("id") Long id) {
         int count = brandService.deleteBrand(id);
         if (count == 1) {
             return CommonResult.success(null);
@@ -103,7 +103,7 @@ public class PmsBrandController {
     @RequestMapping(value = "/delete/batch", method = RequestMethod.POST)
     @ResponseBody
     @PreAuthorize("hasAuthority('pms:brand:delete')")
-    public CommonResult deleteBatch(@RequestParam("ids") List<Long> ids) {
+    public CommonResult<?> deleteBatch(@RequestParam("ids") List<Long> ids) {
         int count = brandService.deleteBrand(ids);
         if (count > 0) {
             return CommonResult.success(count);
@@ -116,7 +116,7 @@ public class PmsBrandController {
     @RequestMapping(value = "/update/showStatus", method = RequestMethod.POST)
     @ResponseBody
     @PreAuthorize("hasAuthority('pms:brand:update')")
-    public CommonResult updateShowStatus(@RequestParam("ids") List<Long> ids,
+    public CommonResult<?> updateShowStatus(@RequestParam("ids") List<Long> ids,
                                    @RequestParam("showStatus") Integer showStatus) {
         int count = brandService.updateShowStatus(ids, showStatus);
         if (count > 0) {
@@ -130,7 +130,7 @@ public class PmsBrandController {
     @RequestMapping(value = "/update/factoryStatus", method = RequestMethod.POST)
     @ResponseBody
     @PreAuthorize("hasAuthority('pms:brand:update')")
-    public CommonResult updateFactoryStatus(@RequestParam("ids") List<Long> ids,
+    public CommonResult<?> updateFactoryStatus(@RequestParam("ids") List<Long> ids,
                                       @RequestParam("factoryStatus") Integer factoryStatus) {
         int count = brandService.updateFactoryStatus(ids, factoryStatus);
         if (count > 0) {

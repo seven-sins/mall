@@ -43,7 +43,7 @@ public class PmsProductAttributeController {
     @ApiOperation("添加商品属性信息")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult create(@RequestBody PmsProductAttributeParam productAttributeParam, BindingResult bindingResult) {
+    public CommonResult<?> create(@RequestBody PmsProductAttributeParam productAttributeParam, BindingResult bindingResult) {
         int count = productAttributeService.create(productAttributeParam);
         if (count > 0) {
             return CommonResult.success(count);
@@ -55,7 +55,7 @@ public class PmsProductAttributeController {
     @ApiOperation("修改商品属性信息")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult update(@PathVariable Long id, @RequestBody PmsProductAttributeParam productAttributeParam, BindingResult bindingResult) {
+    public CommonResult<?> update(@PathVariable Long id, @RequestBody PmsProductAttributeParam productAttributeParam, BindingResult bindingResult) {
         int count = productAttributeService.update(id, productAttributeParam);
         if (count > 0) {
             return CommonResult.success(count);
@@ -75,7 +75,7 @@ public class PmsProductAttributeController {
     @ApiOperation("批量删除商品属性")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult delete(@RequestParam("ids") List<Long> ids) {
+    public CommonResult<?> delete(@RequestParam("ids") List<Long> ids) {
         int count = productAttributeService.delete(ids);
         if (count > 0) {
             return CommonResult.success(count);

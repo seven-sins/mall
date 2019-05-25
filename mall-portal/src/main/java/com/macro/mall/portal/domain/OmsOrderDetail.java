@@ -10,7 +10,8 @@ import java.util.List;
  * Created by macro on 2018/9/4.
  */
 public class OmsOrderDetail extends OmsOrder {
-    private List<OmsOrderItem> orderItemList;
+	private static final long serialVersionUID = 1L;
+	private List<OmsOrderItem> orderItemList;
 
     public List<OmsOrderItem> getOrderItemList() {
         return orderItemList;

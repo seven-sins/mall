@@ -12,7 +12,8 @@ import java.util.List;
  * Created by macro on 2018/8/29.
  */
 public class SmsCouponHistoryDetail extends SmsCouponHistory {
-    //相关优惠券信息
+	private static final long serialVersionUID = 1L;
+	//相关优惠券信息
     private SmsCoupon coupon;
     //优惠券关联商品
     private List<SmsCouponProductRelation> productRelationList;

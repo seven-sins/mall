@@ -13,7 +13,8 @@ import java.util.List;
  * Created by macro on 2018/10/11.
  */
 public class OmsOrderDetail extends OmsOrder {
-    @Getter
+	private static final long serialVersionUID = 1L;
+	@Getter
     @Setter
     private List<OmsOrderItem> orderItemList;
     @Getter

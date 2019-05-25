@@ -32,7 +32,7 @@ public class PmsProductController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
     @PreAuthorize("hasAuthority('pms:product:create')")
-    public CommonResult create(@RequestBody PmsProductParam productParam, BindingResult bindingResult) {
+    public CommonResult<?> create(@RequestBody PmsProductParam productParam, BindingResult bindingResult) {
         int count = productService.create(productParam);
         if (count > 0) {
             return CommonResult.success(count);
@@ -54,7 +54,7 @@ public class PmsProductController {
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
     @PreAuthorize("hasAuthority('pms:product:update')")
-    public CommonResult update(@PathVariable Long id, @RequestBody PmsProductParam productParam, BindingResult bindingResult) {
+    public CommonResult<?> update(@PathVariable Long id, @RequestBody PmsProductParam productParam, BindingResult bindingResult) {
         int count = productService.update(id, productParam);
         if (count > 0) {
             return CommonResult.success(count);
@@ -86,7 +86,7 @@ public class PmsProductController {
     @RequestMapping(value = "/update/verifyStatus", method = RequestMethod.POST)
     @ResponseBody
     @PreAuthorize("hasAuthority('pms:product:update')")
-    public CommonResult updateVerifyStatus(@RequestParam("ids") List<Long> ids,
+    public CommonResult<?> updateVerifyStatus(@RequestParam("ids") List<Long> ids,
                                            @RequestParam("verifyStatus") Integer verifyStatus,
                                            @RequestParam("detail") String detail) {
         int count = productService.updateVerifyStatus(ids, verifyStatus, detail);
@@ -101,7 +101,7 @@ public class PmsProductController {
     @RequestMapping(value = "/update/publishStatus", method = RequestMethod.POST)
     @ResponseBody
     @PreAuthorize("hasAuthority('pms:product:update')")
-    public CommonResult updatePublishStatus(@RequestParam("ids") List<Long> ids,
+    public CommonResult<?> updatePublishStatus(@RequestParam("ids") List<Long> ids,
                                             @RequestParam("publishStatus") Integer publishStatus) {
         int count = productService.updatePublishStatus(ids, publishStatus);
         if (count > 0) {
@@ -115,7 +115,7 @@ public class PmsProductController {
     @RequestMapping(value = "/update/recommendStatus", method = RequestMethod.POST)
     @ResponseBody
     @PreAuthorize("hasAuthority('pms:product:update')")
-    public CommonResult updateRecommendStatus(@RequestParam("ids") List<Long> ids,
+    public CommonResult<?> updateRecommendStatus(@RequestParam("ids") List<Long> ids,
                                               @RequestParam("recommendStatus") Integer recommendStatus) {
         int count = productService.updateRecommendStatus(ids, recommendStatus);
         if (count > 0) {
@@ -129,7 +129,7 @@ public class PmsProductController {
     @RequestMapping(value = "/update/newStatus", method = RequestMethod.POST)
     @ResponseBody
     @PreAuthorize("hasAuthority('pms:product:update')")
-    public CommonResult updateNewStatus(@RequestParam("ids") List<Long> ids,
+    public CommonResult<?> updateNewStatus(@RequestParam("ids") List<Long> ids,
                                         @RequestParam("newStatus") Integer newStatus) {
         int count = productService.updateNewStatus(ids, newStatus);
         if (count > 0) {
@@ -143,7 +143,7 @@ public class PmsProductController {
     @RequestMapping(value = "/update/deleteStatus", method = RequestMethod.POST)
     @ResponseBody
     @PreAuthorize("hasAuthority('pms:product:delete')")
-    public CommonResult updateDeleteStatus(@RequestParam("ids") List<Long> ids,
+    public CommonResult<?> updateDeleteStatus(@RequestParam("ids") List<Long> ids,
                                            @RequestParam("deleteStatus") Integer deleteStatus) {
         int count = productService.updateDeleteStatus(ids, deleteStatus);
         if (count > 0) {

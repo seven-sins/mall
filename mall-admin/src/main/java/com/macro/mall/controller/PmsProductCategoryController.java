@@ -32,7 +32,7 @@ public class PmsProductCategoryController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
     @PreAuthorize("hasAuthority('pms:productCategory:create')")
-    public CommonResult create(@Validated @RequestBody PmsProductCategoryParam productCategoryParam,
+    public CommonResult<?> create(@Validated @RequestBody PmsProductCategoryParam productCategoryParam,
                          BindingResult result) {
         int count = productCategoryService.create(productCategoryParam);
         if (count > 0) {
@@ -46,7 +46,7 @@ public class PmsProductCategoryController {
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
     @PreAuthorize("hasAuthority('pms:productCategory:update')")
-    public CommonResult update(@PathVariable Long id,
+    public CommonResult<?> update(@PathVariable Long id,
                          @Validated
                          @RequestBody PmsProductCategoryParam productCategoryParam,
                          BindingResult result) {
@@ -82,7 +82,7 @@ public class PmsProductCategoryController {
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     @ResponseBody
     @PreAuthorize("hasAuthority('pms:productCategory:delete')")
-    public CommonResult delete(@PathVariable Long id) {
+    public CommonResult<?> delete(@PathVariable Long id) {
         int count = productCategoryService.delete(id);
         if (count > 0) {
             return CommonResult.success(count);
@@ -95,7 +95,7 @@ public class PmsProductCategoryController {
     @RequestMapping(value = "/update/navStatus", method = RequestMethod.POST)
     @ResponseBody
     @PreAuthorize("hasAuthority('pms:productCategory:update')")
-    public CommonResult updateNavStatus(@RequestParam("ids") List<Long> ids, @RequestParam("navStatus") Integer navStatus) {
+    public CommonResult<?> updateNavStatus(@RequestParam("ids") List<Long> ids, @RequestParam("navStatus") Integer navStatus) {
         int count = productCategoryService.updateNavStatus(ids, navStatus);
         if (count > 0) {
             return CommonResult.success(count);
@@ -108,7 +108,7 @@ public class PmsProductCategoryController {
     @RequestMapping(value = "/update/showStatus", method = RequestMethod.POST)
     @ResponseBody
     @PreAuthorize("hasAuthority('pms:productCategory:update')")
-    public CommonResult updateShowStatus(@RequestParam("ids") List<Long> ids, @RequestParam("showStatus") Integer showStatus) {
+    public CommonResult<?> updateShowStatus(@RequestParam("ids") List<Long> ids, @RequestParam("showStatus") Integer showStatus) {
         int count = productCategoryService.updateShowStatus(ids, showStatus);
         if (count > 0) {
             return CommonResult.success(count);

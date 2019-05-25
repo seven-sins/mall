@@ -1,10 +1,10 @@
 package com.macro.mall.search.service.impl;
 
-import com.macro.mall.search.dao.EsProductDao;
-import com.macro.mall.search.domain.EsProduct;
-import com.macro.mall.search.domain.EsProductRelatedInfo;
-import com.macro.mall.search.repository.EsProductRepository;
-import com.macro.mall.search.service.EsProductService;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.common.lucene.search.function.FunctionScoreQuery;
 import org.elasticsearch.index.query.BoolQueryBuilder;
@@ -14,9 +14,6 @@ import org.elasticsearch.index.query.functionscore.ScoreFunctionBuilders;
 import org.elasticsearch.search.aggregations.AbstractAggregationBuilder;
 import org.elasticsearch.search.aggregations.Aggregation;
 import org.elasticsearch.search.aggregations.AggregationBuilders;
-import org.elasticsearch.search.aggregations.bucket.filter.InternalFilter;
-import org.elasticsearch.search.aggregations.bucket.terms.LongTerms;
-import org.elasticsearch.search.aggregations.bucket.terms.StringTerms;
 import org.elasticsearch.search.aggregations.bucket.terms.Terms;
 import org.elasticsearch.search.sort.SortBuilders;
 import org.elasticsearch.search.sort.SortOrder;
@@ -34,10 +31,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import com.macro.mall.search.dao.EsProductDao;
+import com.macro.mall.search.domain.EsProduct;
+import com.macro.mall.search.domain.EsProductRelatedInfo;
+import com.macro.mall.search.repository.EsProductRepository;
+import com.macro.mall.search.service.EsProductService;
 
 
 /**
@@ -209,7 +207,7 @@ public class EsProductServiceImpl implements EsProductService {
         //集合搜索分类名称
         builder.addAggregation(AggregationBuilders.terms("productCategoryNames").field("productCategoryName"));
         //聚合搜索商品属性，去除type=1的属性
-        AbstractAggregationBuilder aggregationBuilder = AggregationBuilders.nested("allAttrValues","attrValueList")
+        AbstractAggregationBuilder<?> aggregationBuilder = AggregationBuilders.nested("allAttrValues","attrValueList")
                 .subAggregation(AggregationBuilders.filter("productAttrs",QueryBuilders.termQuery("attrValueList.type",1))
                 .subAggregation(AggregationBuilders.terms("attrIds")
                         .field("attrValueList.productAttributeId")
@@ -245,8 +243,8 @@ public class EsProductServiceImpl implements EsProductService {
             productCategoryNameList.add(((Terms) productCategoryNames).getBuckets().get(i).getKeyAsString());
         }
         productRelatedInfo.setProductCategoryNames(productCategoryNameList);
-        //设置参数
-        Aggregation productAttrs = aggregationMap.get("allAttrValues");
+        // 设置参数
+        // Aggregation productAttrs = aggregationMap.get("allAttrValues");
 //        List<Terms.Bucket> attrIds = ((LongTerms) ((InternalFilter)productAttrs.getProperty("productAttrs")).getAggregations().getProperty("attrIds")).getBuckets();
 //        List<EsProductRelatedInfo.ProductAttr> attrList = new ArrayList<>();
 //        for (Terms.Bucket attrId : attrIds) {

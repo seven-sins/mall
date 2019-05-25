@@ -11,7 +11,8 @@ import java.util.List;
  * Created by macro on 2018/8/28.
  */
 public class SmsCouponParam extends SmsCoupon {
-    //优惠券绑定的商品
+	private static final long serialVersionUID = 1L;
+	//优惠券绑定的商品
     private List<SmsCouponProductRelation> productRelationList;
     //优惠券绑定的商品分类
     private List<SmsCouponProductCategoryRelation> productCategoryRelationList;

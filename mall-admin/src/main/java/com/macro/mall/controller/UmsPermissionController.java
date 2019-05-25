@@ -25,7 +25,7 @@ public class UmsPermissionController {
     @ApiOperation("添加权限")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult create(@RequestBody UmsPermission permission) {
+    public CommonResult<?> create(@RequestBody UmsPermission permission) {
         int count = permissionService.create(permission);
         if(count>0){
             return CommonResult.success(count);
@@ -36,7 +36,7 @@ public class UmsPermissionController {
     @ApiOperation("修改权限")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult update(@PathVariable Long id, @RequestBody UmsPermission permission) {
+    public CommonResult<?> update(@PathVariable Long id, @RequestBody UmsPermission permission) {
         int count = permissionService.update(id,permission);
         if(count>0){
             return CommonResult.success(count);
@@ -47,7 +47,7 @@ public class UmsPermissionController {
     @ApiOperation("根据id批量删除权限")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult delete(@RequestParam("ids") List<Long> ids) {
+    public CommonResult<?> delete(@RequestParam("ids") List<Long> ids) {
         int count = permissionService.delete(ids);
         if(count>0){
             return CommonResult.success(count);

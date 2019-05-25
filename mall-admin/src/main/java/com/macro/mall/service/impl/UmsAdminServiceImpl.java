@@ -1,22 +1,17 @@
 package com.macro.mall.service.impl;
 
-import com.github.pagehelper.PageHelper;
-import com.macro.mall.dao.UmsAdminPermissionRelationDao;
-import com.macro.mall.dao.UmsAdminRoleRelationDao;
-import com.macro.mall.dto.UmsAdminParam;
-import com.macro.mall.mapper.UmsAdminLoginLogMapper;
-import com.macro.mall.mapper.UmsAdminMapper;
-import com.macro.mall.mapper.UmsAdminPermissionRelationMapper;
-import com.macro.mall.mapper.UmsAdminRoleRelationMapper;
-import com.macro.mall.model.*;
-import com.macro.mall.service.UmsAdminService;
-import com.macro.mall.util.JwtTokenUtil;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
@@ -30,11 +25,25 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.github.pagehelper.PageHelper;
+import com.macro.mall.dao.UmsAdminPermissionRelationDao;
+import com.macro.mall.dao.UmsAdminRoleRelationDao;
+import com.macro.mall.dto.UmsAdminParam;
+import com.macro.mall.mapper.UmsAdminLoginLogMapper;
+import com.macro.mall.mapper.UmsAdminMapper;
+import com.macro.mall.mapper.UmsAdminPermissionRelationMapper;
+import com.macro.mall.mapper.UmsAdminRoleRelationMapper;
+import com.macro.mall.model.UmsAdmin;
+import com.macro.mall.model.UmsAdminExample;
+import com.macro.mall.model.UmsAdminLoginLog;
+import com.macro.mall.model.UmsAdminPermissionRelation;
+import com.macro.mall.model.UmsAdminPermissionRelationExample;
+import com.macro.mall.model.UmsAdminRoleRelation;
+import com.macro.mall.model.UmsAdminRoleRelationExample;
+import com.macro.mall.model.UmsPermission;
+import com.macro.mall.model.UmsRole;
+import com.macro.mall.service.UmsAdminService;
+import com.macro.mall.util.JwtTokenUtil;
 
 /**
  * UmsAdminService实现类
@@ -43,8 +52,8 @@ import java.util.stream.Collectors;
 @Service
 public class UmsAdminServiceImpl implements UmsAdminService {
     private static final Logger LOGGER = LoggerFactory.getLogger(UmsAdminServiceImpl.class);
-    @Autowired
-    private AuthenticationManager authenticationManager;
+	//    @Autowired
+	//    private AuthenticationManager authenticationManager;
     @Autowired
     private UserDetailsService userDetailsService;
     @Autowired
@@ -135,13 +144,13 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     /**
      * 根据用户名修改登录时间
      */
-    private void updateLoginTimeByUsername(String username) {
-        UmsAdmin record = new UmsAdmin();
-        record.setLoginTime(new Date());
-        UmsAdminExample example = new UmsAdminExample();
-        example.createCriteria().andUsernameEqualTo(username);
-        adminMapper.updateByExampleSelective(record, example);
-    }
+	//    private void updateLoginTimeByUsername(String username) {
+	//        UmsAdmin record = new UmsAdmin();
+	//        record.setLoginTime(new Date());
+	//        UmsAdminExample example = new UmsAdminExample();
+	//        example.createCriteria().andUsernameEqualTo(username);
+	//        adminMapper.updateByExampleSelective(record, example);
+	//    }
 
     @Override
     public String refreshToken(String oldToken) {

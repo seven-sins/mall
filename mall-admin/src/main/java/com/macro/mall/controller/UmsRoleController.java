@@ -26,7 +26,7 @@ public class UmsRoleController {
     @ApiOperation("添加角色")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult create(@RequestBody UmsRole role) {
+    public CommonResult<?> create(@RequestBody UmsRole role) {
         int count = roleService.create(role);
         if (count > 0) {
             return CommonResult.success(count);
@@ -37,7 +37,7 @@ public class UmsRoleController {
     @ApiOperation("修改角色")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult update(@PathVariable Long id, @RequestBody UmsRole role) {
+    public CommonResult<?> update(@PathVariable Long id, @RequestBody UmsRole role) {
         int count = roleService.update(id, role);
         if (count > 0) {
             return CommonResult.success(count);
@@ -48,7 +48,7 @@ public class UmsRoleController {
     @ApiOperation("批量删除角色")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult delete(@RequestParam("ids") List<Long> ids) {
+    public CommonResult<?> delete(@RequestParam("ids") List<Long> ids) {
         int count = roleService.delete(ids);
         if (count > 0) {
             return CommonResult.success(count);
@@ -67,7 +67,7 @@ public class UmsRoleController {
     @ApiOperation("修改角色权限")
     @RequestMapping(value = "/permission/update", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult updatePermission(@RequestParam Long roleId,
+    public CommonResult<?> updatePermission(@RequestParam Long roleId,
                                          @RequestParam("permissionIds") List<Long> permissionIds) {
         int count = roleService.updatePermission(roleId, permissionIds);
         if (count > 0) {

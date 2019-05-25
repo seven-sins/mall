@@ -8,7 +8,8 @@ import java.util.List;
  * Created by macro on 2018/5/25.
  */
 public class PmsProductCategoryWithChildrenItem extends PmsProductCategory {
-    private List<PmsProductCategory> children;
+	private static final long serialVersionUID = 1L;
+	private List<PmsProductCategory> children;
 
     public List<PmsProductCategory> getChildren() {
         return children;

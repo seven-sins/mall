@@ -30,7 +30,7 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
     @Autowired
     private SmsCouponHistoryDao couponHistoryDao;
     @Override
-    public CommonResult add(Long couponId) {
+    public CommonResult<?> add(Long couponId) {
         UmsMember currentMember = memberService.getCurrentMember();
         //获取优惠券信息，判断数量
         SmsCoupon coupon = couponMapper.selectByPrimaryKey(couponId);

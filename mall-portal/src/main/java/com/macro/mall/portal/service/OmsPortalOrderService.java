@@ -19,19 +19,19 @@ public interface OmsPortalOrderService {
      * 根据提交信息生成订单
      */
     @Transactional
-    CommonResult generateOrder(OrderParam orderParam);
+    CommonResult<?> generateOrder(OrderParam orderParam);
 
     /**
      * 支付成功后的回调
      */
     @Transactional
-    CommonResult paySuccess(Long orderId);
+    CommonResult<?> paySuccess(Long orderId);
 
     /**
      * 自动取消超时订单
      */
     @Transactional
-    CommonResult cancelTimeOutOrder();
+    CommonResult<?> cancelTimeOutOrder();
 
     /**
      * 取消单个超时订单

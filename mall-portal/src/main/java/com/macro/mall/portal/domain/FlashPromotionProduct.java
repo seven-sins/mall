@@ -13,7 +13,8 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 public class FlashPromotionProduct extends PmsProduct{
-    private BigDecimal flashPromotionPrice;
+	private static final long serialVersionUID = 1L;
+	private BigDecimal flashPromotionPrice;
     private Integer flashPromotionCount;
     private Integer flashPromotionLimit;
 }
